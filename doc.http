@@ -1,0 +1,1275 @@
+@base = http://localhost:8000
+@token = 1|GuLk2Kr6T9OWBM6gedpNSLggZYID2iTOhGaeGzv9fb07a4df
+
+### Registro de Usuário
+POST {{base}}/api/register
+Content-Type: application/json
+Accept: application/json
+
+{
+    "nome": "Max",
+    "email": "max@exemplo.com",
+    "senha": "senha123",
+    "senha_confirmation": "senha123",
+    "cpf": "12345678901",
+    "tipo": "admin",
+    "aceita_orcamento": true,
+    "aceita_voucher": true,
+    "tipo_operacao": 1
+}
+
+### Login
+POST {{base}}/api/login
+Content-Type: application/json
+Accept: application/json
+
+{
+    "email": "admin@sistema.com",
+    "senha": "admin123"
+}
+
+
+### Logout
+POST {{base}}/api/logout
+Content-Type: application/json
+Accept: application/json
+Authorization: Bearer 4|JIDQNZ0gz4bnhMdkEG8AA7Lrk8lWaxNjToWMF9BU66b6b27d
+
+
+### Informações do Usuário Atual
+GET {{base}}/api/me
+Content-Type: application/json
+Accept: application/json
+Authorization: Bearer Bearer 1|blpkkFUrqAccnxVQGAlASYkVpO0lCmupuLrzrFag85b42415
+
+
+### Obter Dados do Dashboard
+GET {{base}}/api/dashboard
+Content-Type: application/json
+Accept: application/json
+Authorization: Bearer 2|u3nliejGvYgG2gZ8K8likq3CWyQMBjj5jREJOKHNa91bdc70
+
+
+#### Listar Usuários
+GET {{base}}/api/usuarios
+Content-Type: application/json
+Accept: application/json
+Authorization: Bearer 1|gdoWQ2XvKl94GQeh6zR8CcGMtbVfJdp6zOkcTlve62b2b162
+
+### Obter Usuário
+GET {{base}}/api/usuarios/6
+Content-Type: application/json
+Accept: application/json
+Authorization: Bearer 1|gdoWQ2XvKl94GQeh6zR8CcGMtbVfJdp6zOkcTlve62b2b162
+
+### Criar Usuário
+POST {{base}}/api/usuarios
+Content-Type: application/json
+Accept: application/json
+Authorization: Bearer 1|gdoWQ2XvKl94GQeh6zR8CcGMtbVfJdp6zOkcTlve62b2b162
+
+{
+    "nome": "Max",
+    "email": "max@exemplo.com",
+    "senha": "senha123",
+    "senha_confirmation": "senha123",
+    "cpf": "12345678901",
+    "tipo": "admin",
+    "aceita_orcamento": true,
+    "aceita_voucher": true,
+    "tipo_operacao": 1
+}
+
+### Atualizar Usuário
+PUT {{base}}/api/usuarios/6
+Content-Type: application/json
+Accept: application/json
+Authorization: Bearer 1|gdoWQ2XvKl94GQeh6zR8CcGMtbVfJdp6zOkcTlve62b2b162
+
+{
+    "nome": "Max",
+    "email": "max@exemplo.com"
+}
+
+
+### Deletar Usuário
+DELETE {{base}}/api/usuarios/6
+Content-Type: application/json
+Accept: application/json
+Authorization: Bearer 1|gdoWQ2XvKl94GQeh6zR8CcGMtbVfJdp6zOkcTlve62b2b162
+
+
+### Bloquear e Desbloquear Usuário
+POST {{base}}/api/usuarios/7/toggle-bloqueio
+Content-Type: application/json
+Accept: application/json
+Authorization: Bearer 1|gdoWQ2XvKl94GQeh6zR8CcGMtbVfJdp6zOkcTlve62b2b162
+
+
+### Resetar Senha de Usuário
+POST {{base}}/api/usuarios/7/resetar-senha
+Content-Type: application/json
+Accept: application/json
+Authorization: Bearer 1|gdoWQ2XvKl94GQeh6zR8CcGMtbVfJdp6zOkcTlve62b2b162
+
+
+### Listar Contas
+GET {{base}}/api/contas
+Content-Type: application/json
+Accept: application/json
+Authorization: Bearer 1|blpkkFUrqAccnxVQGAlASYkVpO0lCmupuLrzrFag85b42415
+
+
+###
+GET {{base}}/api/contas/1
+Content-Type: application/json
+Accept: application/json
+Authorization: Bearer 1|blpkkFUrqAccnxVQGAlASYkVpO0lCmupuLrzrFag85b42415
+
+
+### Criar Conta
+POST {{base}}/api/contas
+Content-Type: application/json
+Accept: application/json
+Authorization: Bearer 1|blpkkFUrqAccnxVQGAlASYkVpO0lCmupuLrzrFag85b42415
+
+{
+    "usuario_id": 2,
+    "tipo_conta_id": 2,
+    "plano_id": 1,
+    "limite_permuta": 1000,
+    "limite_credito": 1000,
+    "limite_venda_mensal": 1000000,
+    "limite_venda_total": 1000000,
+    "limite_venda_empresa": 5000000,
+    "dia_fechamento_fatura": 10,
+    "data_vencimento_fatura": 20,
+    "numero_conta": "ADM0002"
+}
+
+### Atualizar Conta
+PUT {{base}}/api/contas/1
+Content-Type: application/json
+Accept: application/json
+Authorization: Bearer Bearer 1|blpkkFUrqAccnxVQGAlASYkVpO0lCmupuLrzrFag85b42415
+
+{
+    "limite_credito": 5500000,
+    "status": "ativo"
+}
+
+###
+DELETE {{base}}/api/contas/1
+Content-Type: application/json
+Accept: application/json
+Authorization: Bearer 4|JIDQNZ0gz4bnhMdkEG8AA7Lrk8lWaxNjToWMF9BU66b6b27d
+
+### obter minha conta
+GET {{base}}/api/minha-conta
+Content-Type: application/json
+Accept: application/json
+Authorization: Bearer 1|blpkkFUrqAccnxVQGAlASYkVpO0lCmupuLrzrFag85b42415
+
+### Aumentar Limite
+POST {{base}}/api/contas/1/aumentar-limite
+Content-Type: application/json
+Accept: application/json
+Authorization: Bearer 1|blpkkFUrqAccnxVQGAlASYkVpO0lCmupuLrzrFag85b42415
+
+{
+    "valorAumento": 500
+}
+
+### Diminuir Limite
+POST {{base}}/api/contas/1/diminuir-limite
+Content-Type: application/json
+Accept: application/json
+Authorization: Bearer 1|blpkkFUrqAccnxVQGAlASYkVpO0lCmupuLrzrFag85b42415
+
+{
+    "valorReducao": 300
+}
+
+### Atualizar Saldo Permuta
+POST {{base}}/api/contas/1/saldo-permuta
+Content-Type: application/json
+Accept: application/json
+Authorization: Bearer 1|blpkkFUrqAccnxVQGAlASYkVpO0lCmupuLrzrFag85b42415
+
+{
+    "valor": 1000,
+    "operacao": "adicionar"
+}
+
+### Atualizar Saldo Dinheiro
+POST {{base}}/api/contas/1/saldo-dinheiro
+Content-Type: application/json
+Accept: application/json
+Authorization: Bearer 1|blpkkFUrqAccnxVQGAlASYkVpO0lCmupuLrzrFag85b42415
+
+{
+    "valor": 500,
+    "operacao": "adicionar"
+}
+
+### Listar Tipos de Conta
+GET {{base}}/api/tipo-contas
+Content-Type: application/json
+Accept: application/json
+Authorization: Bearer 1|blpkkFUrqAccnxVQGAlASYkVpO0lCmupuLrzrFag85b42415
+
+### Obter Tipo de Conta
+GET {{base}}/api/tipo-contas/1
+Content-Type: application/json
+Accept: application/json
+Authorization: Bearer 1|blpkkFUrqAccnxVQGAlASYkVpO0lCmupuLrzrFag85b42415
+
+
+### Criar Tipo de Conta
+POST {{base}}/api/tipo-contas
+Content-Type: application/json
+Accept: application/json
+Authorization: Bearer 1|blpkkFUrqAccnxVQGAlASYkVpO0lCmupuLrzrFag85b42415
+
+{
+    "tipo_da_conta": "Empresarial Plus",
+    "prefixo_conta": "EMPP",
+    "descricao": "Conta para empresas premium",
+    "permissoes": "[\"comprar\",\"vender\",\"criarOferta\",\"solicitarCredito\"]"
+}
+
+### Atualizar Tipo de Conta
+PUT {{base}}/api/tipo-contas/7
+Content-Type: application/json
+Accept: application/json
+Authorization: Bearer 1|blpkkFUrqAccnxVQGAlASYkVpO0lCmupuLrzrFag85b42415
+
+{
+    "tipo_da_conta": "Empresarial Plus 3",
+    "prefixo_conta": "EMPP 3",
+    "descricao": "Conta para empresas premium 3",
+    "permissoes": "[\"comprar\",\"vender\",\"criarOferta\",\"solicitarCredito\"]"
+}
+
+### Deletar Tipo de Conta
+DELETE {{base}}/api/tipo-contas/9
+Content-Type: application/json
+Accept: application/json
+Authorization: Bearer 1|blpkkFUrqAccnxVQGAlASYkVpO0lCmupuLrzrFag85b42415
+
+
+### Listar Planos
+GET {{base}}/api/planos
+Content-Type: application/json
+Accept: application/json
+Authorization: Bearer 1|blpkkFUrqAccnxVQGAlASYkVpO0lCmupuLrzrFag85b42415
+
+### Obter Plano
+GET {{base}}/api/planos/5
+Content-Type: application/json
+Accept: application/json
+Authorization: Bearer 1|blpkkFUrqAccnxVQGAlASYkVpO0lCmupuLrzrFag85b42415
+
+
+### Criar Plano
+POST {{base}}/api/planos
+Content-Type: application/json
+Accept: application/json
+Authorization: Bearer 1|blpkkFUrqAccnxVQGAlASYkVpO0lCmupuLrzrFag85b42415
+
+{
+    "nome_plano": "Plano Básico 2",
+    "tipo_do_plano": "Empresarial",
+    "taxa_inscricao": 50.00,
+    "taxa_comissao": 5.00,
+    "taxa_manutencao_anual": 120.00
+}
+
+### Atualizar Plano
+PUT {{base}}/api/planos/7
+Content-Type: application/json
+Accept: application/json
+Authorization: Bearer 1|blpkkFUrqAccnxVQGAlASYkVpO0lCmupuLrzrFag85b42415
+
+{
+    "nome_plano": "Plano Básico 2",
+    "tipo_do_plano": "Empresarial",
+    "taxa_inscricao": 60.00,
+    "taxa_comissao": 6.00,
+    "taxa_manutencao_anual": 160.00
+}
+
+### Deletar Plano
+DELETE {{base}}/api/planos/7
+Content-Type: application/json
+Accept: application/json
+Authorization: Bearer 1|blpkkFUrqAccnxVQGAlASYkVpO0lCmupuLrzrFag85b42415
+
+
+### Listar Planos por Tipo de Conta
+GET {{base}}/api/planos/by-tipo?tipo=Empresarial
+Content-Type: application/json
+Accept: application/json
+Authorization: Bearer 1|blpkkFUrqAccnxVQGAlASYkVpO0lCmupuLrzrFag85b42415
+
+### Listar Planos por Tipo de Conta
+GET {{base}}/api/planos/by-tipo?tipo_conta_id=1
+Content-Type: application/json
+Accept: application/json
+Authorization: Bearer 1|blpkkFUrqAccnxVQGAlASYkVpO0lCmupuLrzrFag85b42415
+
+
+### Comparar Planos
+POST {{base}}/api/planos/compare
+Content-Type: application/json
+Accept: application/json
+Authorization: Bearer 1|blpkkFUrqAccnxVQGAlASYkVpO0lCmupuLrzrFag85b42415
+
+{
+    "planos": [1, 2, 3]
+}
+
+### Listar Sub-Contas
+GET {{base}}/api/sub-contas
+Content-Type: application/json
+Accept: application/json
+Authorization: Bearer 1|blpkkFUrqAccnxVQGAlASYkVpO0lCmupuLrzrFag85b42415
+
+### Obter Sub-Conta
+GET {{base}}/api/sub-contas/5
+Content-Type: application/json
+Accept: application/json
+Authorization: Bearer 1|blpkkFUrqAccnxVQGAlASYkVpO0lCmupuLrzrFag85b42415
+
+### Criar Sub-Conta
+POST {{base}}/api/sub-contas
+Content-Type: application/json
+Accept: application/json
+Authorization: Bearer 1|blpkkFUrqAccnxVQGAlASYkVpO0lCmupuLrzrFag85b42415
+
+{
+    "nome": "Max Souza",
+    "email": "max@emai.com.br",
+    "senha": "Password@1",
+    "cpf": "12345678901",
+    "numero_sub_conta": "SUB0003",
+    "conta_pai_id": 1
+}
+
+### Atualizar Sub-Conta
+PUT {{base}}/api/sub-contas/3
+Content-Type: application/json
+Accept: application/json
+Authorization: Bearer 1|blpkkFUrqAccnxVQGAlASYkVpO0lCmupuLrzrFag85b42415
+
+{
+    "nome": "Max",
+    "email": "max@email.com.br",
+    "senha": "Password@1",
+    "cpf": "12345678901",
+    "numero_sub_conta": "SUB0003",
+    "conta_pai_id": 1
+}
+
+### Deletar Sub-Conta
+DELETE {{base}}/api/sub-contas/4
+Content-Type: application/json
+Accept: application/json
+Authorization: Bearer 1|blpkkFUrqAccnxVQGAlASYkVpO0lCmupuLrzrFag85b42415
+
+### Bloquear e Desbloquear Sub-Conta
+POST {{base}}/api/sub-contas/5/toggle-status
+Content-Type: application/json
+Accept: application/json
+Authorization: Bearer 1|blpkkFUrqAccnxVQGAlASYkVpO0lCmupuLrzrFag85b42415
+
+###
+POST {{base}}/api/sub-contas/5/resetar-senha
+Content-Type: application/json
+Accept: application/json
+Authorization: Bearer 1|blpkkFUrqAccnxVQGAlASYkVpO0lCmupuLrzrFag85b42415
+
+{
+    "novaSenha": "Password@1"
+}
+
+### Atualizar Permissões da Sub-Conta
+PUT {{base}}/api/sub-contas/5/permissoes
+Content-Type: application/json
+Accept: application/json
+Authorization: Bearer 1|blpkkFUrqAccnxVQGAlASYkVpO0lCmupuLrzrFag85b42415
+
+{
+    "permissoes": ["gerenciar_ofertas", "visualizar_transacoes"]
+}
+
+### Listar Ofertas
+GET {{base}}/api/ofertas
+Content-Type: application/json
+Accept: application/json
+Authorization: Bearer 1|blpkkFUrqAccnxVQGAlASYkVpO0lCmupuLrzrFag85b42415
+
+### Obter Oferta
+GET {{base}}/api/ofertas/7
+Content-Type: application/json
+Accept: application/json
+Authorization: Bearer 1|blpkkFUrqAccnxVQGAlASYkVpO0lCmupuLrzrFag85b42415
+
+### Criar Oferta
+POST {{base}}/api/ofertas
+Content-Type: application/json
+Accept: application/json
+Authorization: Bearer 1|blpkkFUrqAccnxVQGAlASYkVpO0lCmupuLrzrFag85b42415
+
+{
+    "titulo": "Serviço de Consultoria",
+    "tipo": "Serviço",
+    "descricao": "Consultoria especializada em marketing",
+    "quantidade": 10,
+    "valor": 500,
+    "limite_compra": 1,
+    "vencimento": "2025-05-28",
+    "cidade": "Arapiraca",
+    "estado": "AL",
+    "retirada": "Online",
+    "obs": "Agendamento com antecedência mínima de 3 dias.",
+    "usuario_id": 3,
+    "nome_usuario": "User exemplo",
+    "status": true,
+    "categoria_id": 4
+}
+
+### Atualizar Oferta
+PUT {{base}}/api/ofertas/5
+Content-Type: application/json
+Accept: application/json
+Authorization: Bearer 1|blpkkFUrqAccnxVQGAlASYkVpO0lCmupuLrzrFag85b42415
+
+{
+    "titulo": "Serviço de Consultoria",
+    "tipo": "Serviço",
+    "descricao": "Consultoria especializada em marketing Editada",
+    "quantidade": 10,
+    "valor": 1500,
+    "limite_compra": 2,
+    "vencimento": "2025-05-28",
+    "cidade": "Arapiraca",
+    "estado": "AL",
+    "retirada": "Online",
+    "obs": "Agendamento com antecedência mínima de 3 dias.",
+    "usuario_id": 3,
+    "nome_usuario": "User exemplo",
+    "status": true,
+    "categoria_id": 4
+}
+
+### Deletar Oferta
+DELETE {{base}}/api/ofertas/6
+Content-Type: application/json
+Accept: application/json
+Authorization: Bearer 1|blpkkFUrqAccnxVQGAlASYkVpO0lCmupuLrzrFag85b42415
+
+### Pesquisar Ofertas
+GET {{base}}/api/ofertas/search?termo=Consultoria&categoria_id=4&min_valor=100&max_valor=1000
+Content-Type: application/json
+Accept: application/json
+Authorization: Bearer 1|blpkkFUrqAccnxVQGAlASYkVpO0lCmupuLrzrFag85b42415
+
+### Bloquear e Desbloquear Oferta
+POST {{base}}/api/ofertas/7/toggle-status
+Content-Type: application/json
+Accept: application/json
+Authorization: Bearer 1|blpkkFUrqAccnxVQGAlASYkVpO0lCmupuLrzrFag85b42415
+
+
+### Listar Categorias
+GET {{base}}/api/categorias
+Content-Type: application/json
+Accept: application/json
+Authorization: Bearer {{token}}
+
+
+### Obter Categoria
+GET {{base}}/api/categorias/12
+Content-Type: application/json
+Accept: application/json
+Authorization: Bearer {{token}}
+
+
+### Criar Categoria
+POST {{base}}/api/categorias
+Content-Type: application/json
+Accept: application/json
+Authorization: Bearer {{token}}
+
+{
+    "nome_categoria": "Nova Categoria",
+    "tipo_categoria": "tipo_exemplo"
+}
+
+### Atualizar Categoria
+PUT {{base}}/api/categorias/11
+Content-Type: application/json
+Accept: application/json
+Authorization: Bearer {{token}}
+
+{
+    "nome_categoria": "Categoria Atualizada",
+    "tipo_categoria": "novo_tipo"
+}
+
+### Deletar Categoria
+DELETE {{base}}/api/categorias/13
+Content-Type: application/json
+Accept: application/json
+Authorization: Bearer {{token}}
+
+
+### Categorias com Contagem de Ofertas
+GET {{base}}/api/categorias/with-ofertas-count
+Content-Type: application/json
+Accept: application/json
+Authorization: Bearer {{token}}
+
+
+### Ofertas de uma Categoria (com filtros)
+GET {{base}}/api/categorias/1/ofertas?order_by=created_at&order_direction=desc&per_page=15
+Content-Type: application/json
+Accept: application/json
+Authorization: Bearer {{token}}
+
+
+### ============================================
+### SUBCATEGORIAS
+### ============================================
+
+### Listar Subcategorias
+GET {{base}}/api/sub-categorias
+Content-Type: application/json
+Accept: application/json
+Authorization: Bearer {{token}}
+
+### Obter Subcategoria
+GET {{base}}/api/sub-categorias/1
+Content-Type: application/json
+Accept: application/json
+Authorization: Bearer {{token}}
+
+### Criar Subcategoria
+POST {{base}}/api/sub-categorias
+Content-Type: application/json
+Accept: application/json
+Authorization: Bearer {{token}}
+
+{
+    "nome_sub_categoria": "Nova Subcategoria",
+    "descricao": "Descrição da subcategoria",
+    "categoria_id": 1
+}
+
+### Atualizar Subcategoria
+PUT {{base}}/api/sub-categorias/52
+Content-Type: application/json
+Accept: application/json
+Authorization: Bearer {{token}}
+
+{
+    "nome_sub_categoria": "Subcategoria Atualizada",
+    "descricao": "Nova descrição",
+    "categoria_id": 1
+}
+
+### Deletar Subcategoria
+DELETE {{base}}/api/sub-categorias/52
+Content-Type: application/json
+Accept: application/json
+Authorization: Bearer {{token}}
+
+### Subcategorias por Categoria
+GET {{base}}/api/categorias/1/sub-categorias
+Content-Type: application/json
+Accept: application/json
+Authorization: Bearer {{token}}
+
+### Ofertas de uma Subcategoria
+GET {{base}}/api/sub-categorias/1/ofertas
+Content-Type: application/json
+Accept: application/json
+Authorization: Bearer {{token}}
+
+
+### ============================================
+### TRANSAÇÕES
+### ============================================
+
+### Listar Transações (com filtros)
+GET {{base}}/api/transacoes?tipo=comprador&status=pendente&data_inicio=2025-01-01&data_fim=2025-12-31&order_by=created_at&order_direction=desc&per_page=10
+Content-Type: application/json
+Accept: application/json
+Authorization: Bearer {{token}}
+
+### Obter Transação
+GET {{base}}/api/transacoes/1
+Content-Type: application/json
+Accept: application/json
+Authorization: Bearer {{token}}
+
+### Criar Transação
+POST {{base}}/api/transacoes
+Content-Type: application/json
+Accept: application/json
+Authorization: Bearer {{token}}
+
+{
+    "oferta_id": 1,
+    "comprador_id": 2,
+    "numeroParcelas": 1,
+    "saldo_utilizado": "permuta",
+    "valor_adicional": 0,
+    "descricao": "Compra de produto",
+    "emiteVoucher": true,
+    "codigo_voucher": "BLACKFRIDAY2024-ESPECIAL"
+}
+
+### Atualizar Transação
+PUT {{base}}/api/transacoes/5
+Content-Type: application/json
+Accept: application/json
+Authorization: Bearer {{token}}
+
+{
+    "status": "concluida",
+    "notaAtendimento": 5,
+    "observacaoNota": "Excelente transação"
+}
+
+### Deletar Transação
+DELETE {{base}}/api/transacoes/6
+Content-Type: application/json
+Accept: application/json
+Authorization: Bearer {{token}}
+
+### Estornar Transação
+POST {{base}}/api/transacoes/7/estornar
+Content-Type: application/json
+Accept: application/json
+Authorization: Bearer {{token}}
+
+{
+    "motivo": "Solicitação do cliente por produto com defeito"
+}
+
+### Avaliar Transação
+POST {{base}}/api/transacoes/5/avaliar
+Content-Type: application/json
+Accept: application/json
+Authorization: Bearer {{token}}
+
+{
+    "notaAtendimento": 5,
+    "observacaoNota": "Excelente atendimento, produto conforme descrito"
+}
+
+
+### ============================================
+### VOUCHERS
+### ============================================
+
+### Listar Vouchers
+GET {{base}}/api/vouchers
+Content-Type: application/json
+Accept: application/json
+Authorization: Bearer {{token}}
+
+### Obter Voucher
+GET {{base}}/api/vouchers/4
+Content-Type: application/json
+Accept: application/json
+Authorization: Bearer {{token}}
+
+### Criar Voucher
+POST {{base}}/api/vouchers
+Content-Type: application/json
+Accept: application/json
+Authorization: Bearer {{token}}
+
+{
+    "transacao_id": 8,
+    "codigo": "VOUCHER2024-ESPECIAL",
+    "status": "Ativo"
+}
+
+### Atualizar Voucher
+PUT {{base}}/api/vouchers/6
+Content-Type: application/json
+Accept: application/json
+Authorization: Bearer {{token}}
+
+{
+    "status": "Cancelado",
+    "data_cancelamento": "2025-05-19T19:50:00Z"
+}
+
+### Deletar Voucher
+DELETE {{base}}/api/vouchers/2
+Content-Type: application/json
+Accept: application/json
+Authorization: Bearer {{token}}
+
+### Vouchers por Transação
+GET {{base}}/api/transacoes/4/vouchers
+Content-Type: application/json
+Accept: application/json
+Authorization: Bearer {{token}}
+
+### Validar Voucher
+POST {{base}}/api/vouchers/validar
+Content-Type: application/json
+Accept: application/json
+Authorization: Bearer {{token}}
+
+{
+    "codigo": "BLACKFRIDAY2024-ESPECIAL"
+}
+
+### Utilizar Voucher
+POST {{base}}/api/vouchers/utilizar
+Content-Type: application/json
+Accept: application/json
+Authorization: Bearer {{token}}
+
+{
+    "codigo": "BLACKFRIDAY2024-ESPECIAL",
+    "transacao_id": 4
+}
+
+### ============================================
+### CATEGORIAS
+### ============================================
+
+### Listar Categorias (com filtros e opções)
+GET {{base}}/api/categorias?tipo_categoria=exemplo&includeSubcategorias=true&order_by=nome_categoria&order_direction=asc&per_page=10
+Content-Type: application/json
+Accept: application/json
+Authorization: Bearer {{token}}
+
+### Obter Categoria
+GET {{base}}/api/categorias/1
+Content-Type: application/json
+Accept: application/json
+Authorization: Bearer {{token}}
+
+### Criar Categoria
+POST {{base}}/api/categorias
+Content-Type: application/json
+Accept: application/json
+Authorization: Bearer {{token}}
+
+{
+    "nome_categoria": "Nova Categoria",
+    "tipo_categoria": "tipo_exemplo"
+}
+
+### Atualizar Categoria
+PUT {{base}}/api/categorias/1
+Content-Type: application/json
+Accept: application/json
+Authorization: Bearer {{token}}
+
+{
+    "nome_categoria": "Categoria Atualizada",
+    "tipo_categoria": "novo_tipo"
+}
+
+### Deletar Categoria
+DELETE {{base}}/api/categorias/1
+Content-Type: application/json
+Accept: application/json
+Authorization: Bearer {{token}}
+
+### Categorias com Contagem de Ofertas
+GET {{base}}/api/categorias/with-ofertas-count
+Content-Type: application/json
+Accept: application/json
+Authorization: Bearer {{token}}
+
+### Ofertas de uma Categoria (com filtros)
+GET {{base}}/api/categorias/1/ofertas?order_by=created_at&order_direction=desc&per_page=15
+Content-Type: application/json
+Accept: application/json
+Authorization: Bearer {{token}}
+
+### ============================================
+### SUBCATEGORIAS
+### ============================================
+
+### Listar Subcategorias (com filtros)
+GET {{base}}/api/sub-categorias?categoria_id=1&order_by=nome_sub_categoria&order_direction=asc&per_page=10
+Content-Type: application/json
+Accept: application/json
+Authorization: Bearer {{token}}
+
+### Obter Subcategoria
+GET {{base}}/api/sub-categorias/1
+Content-Type: application/json
+Accept: application/json
+Authorization: Bearer {{token}}
+
+### Criar Subcategoria
+POST {{base}}/api/sub-categorias
+Content-Type: application/json
+Accept: application/json
+Authorization: Bearer {{token}}
+
+{
+    "nome_sub_categoria": "Nova Subcategoria",
+    "categoria_id": 1
+}
+
+### Atualizar Subcategoria
+PUT {{base}}/api/sub-categorias/1
+Content-Type: application/json
+Accept: application/json
+Authorization: Bearer {{token}}
+
+{
+    "nome_sub_categoria": "Subcategoria Atualizada",
+    "categoria_id": 1
+}
+
+### Deletar Subcategoria
+DELETE {{base}}/api/sub-categorias/1
+Content-Type: application/json
+Accept: application/json
+Authorization: Bearer {{token}}
+
+### Subcategorias por Categoria
+GET {{base}}/api/categorias/1/sub-categorias
+Content-Type: application/json
+Accept: application/json
+Authorization: Bearer {{token}}
+
+### Ofertas de uma Subcategoria (com filtros)
+GET {{base}}/api/sub-categorias/1/ofertas?order_by=created_at&order_direction=desc&per_page=15
+Content-Type: application/json
+Accept: application/json
+Authorization: Bearer {{token}}
+
+### ============================================
+### TRANSAÇÕES
+### ============================================
+
+### Listar Transações (com filtros)
+GET {{base}}/api/transacoes?tipo=comprador&status=pendente&data_inicio=2024-01-01&data_fim=2024-12-31&order_by=created_at&order_direction=desc&per_page=10
+Content-Type: application/json
+Accept: application/json
+Authorization: Bearer {{token}}
+
+### Obter Transação
+GET {{base}}/api/transacoes/1
+Content-Type: application/json
+Accept: application/json
+Authorization: Bearer {{token}}
+
+### Criar Transação (voucher automático)
+POST {{base}}/api/transacoes
+Content-Type: application/json
+Accept: application/json
+Authorization: Bearer {{token}}
+
+{
+    "oferta_id": 1,
+    "comprador_id": 2,
+    "numeroParcelas": 1,
+    "saldo_utilizado": "permuta",
+    "valor_adicional": 0,
+    "descricao": "Compra de produto",
+    "emiteVoucher": true
+}
+
+### Criar Transação (voucher personalizado)
+POST {{base}}/api/transacoes
+Content-Type: application/json
+Accept: application/json
+Authorization: Bearer {{token}}
+
+{
+    "oferta_id": 1,
+    "comprador_id": 2,
+    "numeroParcelas": 1,
+    "saldo_utilizado": "permuta",
+    "valor_adicional": 0,
+    "descricao": "Compra de produto",
+    "emiteVoucher": true,
+    "codigo_voucher": "BLACKFRIDAY2024-ESPECIAL"
+}
+
+### Atualizar Transação
+PUT {{base}}/api/transacoes/1
+Content-Type: application/json
+Accept: application/json
+Authorization: Bearer {{token}}
+
+{
+    "status": "concluida",
+    "notaAtendimento": 5,
+    "observacaoNota": "Excelente transação"
+}
+
+### Deletar Transação
+DELETE {{base}}/api/transacoes/1
+Content-Type: application/json
+Accept: application/json
+Authorization: Bearer {{token}}
+
+### Estornar Transação
+POST {{base}}/api/transacoes/1/estornar
+Content-Type: application/json
+Accept: application/json
+Authorization: Bearer {{token}}
+
+{
+    "motivo": "Solicitação do cliente por produto com defeito"
+}
+
+### Avaliar Transação
+POST {{base}}/api/transacoes/1/avaliar
+Content-Type: application/json
+Accept: application/json
+Authorization: Bearer {{token}}
+
+{
+    "notaAtendimento": 5,
+    "observacaoNota": "Excelente atendimento, produto conforme descrito"
+}
+
+### ============================================
+### VOUCHERS
+### ============================================
+
+### Listar Vouchers
+GET {{base}}/api/vouchers
+Content-Type: application/json
+Accept: application/json
+Authorization: Bearer {{token}}
+
+### Obter Voucher
+GET {{base}}/api/vouchers/1
+Content-Type: application/json
+Accept: application/json
+Authorization: Bearer {{token}}
+
+### Criar Voucher (código automático)
+POST {{base}}/api/vouchers
+Content-Type: application/json
+Accept: application/json
+Authorization: Bearer {{token}}
+
+{
+    "transacao_id": 5,
+    "status": "Ativo"
+}
+
+### Criar Voucher (código personalizado)
+POST {{base}}/api/vouchers
+Content-Type: application/json
+Accept: application/json
+Authorization: Bearer {{token}}
+
+{
+    "transacao_id": 5,
+    "codigo": "VOUCHER2024-ESPECIAL",
+    "status": "Ativo"
+}
+
+### Atualizar Voucher
+PUT {{base}}/api/vouchers/1
+Content-Type: application/json
+Accept: application/json
+Authorization: Bearer {{token}}
+
+{
+    "status": "Cancelado",
+    "data_cancelamento": "2025-05-19T19:50:00Z"
+}
+
+### Deletar Voucher
+DELETE {{base}}/api/vouchers/1
+Content-Type: application/json
+Accept: application/json
+Authorization: Bearer {{token}}
+
+### Vouchers por Transação
+GET {{base}}/api/transacoes/1/vouchers
+Content-Type: application/json
+Accept: application/json
+Authorization: Bearer {{token}}
+
+### Validar Voucher
+POST {{base}}/api/vouchers/validar
+Content-Type: application/json
+Accept: application/json
+Authorization: Bearer {{token}}
+
+{
+    "codigo": "VOUCHER2024"
+}
+
+### Utilizar Voucher
+POST {{base}}/api/vouchers/utilizar
+Content-Type: application/json
+Accept: application/json
+Authorization: Bearer {{token}}
+
+{
+    "codigo": "VOUCHER2024",
+    "transacao_id": 1
+}
+
+### ============================================
+### COBRANÇAS - OPERAÇÕES BÁSICAS
+### ============================================
+
+### Listar Cobranças (com filtros)
+GET {{base}}/api/cobrancas?status=Pendente&usuario_id=1&vencimento_inicio=2025-05-01&vencimento_fim=2025-05-31&order_by=vencimento_fatura&order_direction=asc&per_page=10
+Content-Type: application/json
+Accept: application/json
+Authorization: Bearer {{token}}
+
+### Obter Cobrança
+GET {{base}}/api/cobrancas/1
+Content-Type: application/json
+Accept: application/json
+Authorization: Bearer {{token}}
+
+### Criar Cobrança
+POST {{base}}/api/cobrancas
+Content-Type: application/json
+Accept: application/json
+Authorization: Bearer {{token}}
+
+{
+    "valor_fatura": 1500.00,
+    "referencia": "Mensalidade Maio/2025",
+    "vencimento_fatura": "2025-05-25",
+    "status": "Pendente",
+    "usuario_id": 1,
+    "conta_id": 1,
+    "gerente_conta_id": 3
+}
+
+### Atualizar Cobrança
+PUT {{base}}/api/cobrancas/1
+Content-Type: application/json
+Accept: application/json
+Authorization: Bearer {{token}}
+
+{
+    "valor_fatura": 1750.00,
+    "status": "Pendente",
+    "vencimento_fatura": "2025-06-10",
+    "referencia": "Mensalidade Atualizada"
+}
+
+### Cancelar Cobrança (Excluir)
+DELETE {{base}}/api/cobrancas/9
+Content-Type: application/json
+Accept: application/json
+Authorization: Bearer {{token}}
+
+### ============================================
+### COBRANÇAS - OPERAÇÕES ESPECIAIS
+### ============================================
+
+### Atualizar Status da Cobrança
+PUT {{base}}/api/cobrancas/10/status
+Content-Type: application/json
+Accept: application/json
+Authorization: Bearer {{token}}
+
+{
+    "status": "Pago"
+}
+
+### Gerar Cobrança de Transação
+POST {{base}}/api/cobrancas/gerar-transacao
+Content-Type: application/json
+Accept: application/json
+Authorization: Bearer {{token}}
+
+{
+    "transacao_id": 5,
+    "vencimento_fatura": "2025-06-15",
+    "referencia": "Pagamento Transação #5"
+}
+
+### Gerar Cobranças Mensais
+POST {{base}}/api/cobrancas/gerar-mensais
+Content-Type: application/json
+Accept: application/json
+Authorization: Bearer {{token}}
+
+{
+    "mes": 6,
+    "ano": 2025,
+    "diaVencimento": 10
+}
+
+### Processar Cobranças Vencidas
+GET {{base}}/api/cobrancas/vencidas
+Content-Type: application/json
+Accept: application/json
+Authorization: Bearer {{token}}
+
+### ============================================
+### SOLICITAÇÕES DE CRÉDITO
+### ============================================
+
+### Listar Solicitações de Crédito
+GET {{base}}/api/solicitacoes-credito
+Content-Type: application/json
+Accept: application/json
+Authorization: Bearer {{token}}
+
+### Obter Solicitação de Crédito
+GET {{base}}/api/solicitacoes-credito/1
+Content-Type: application/json
+Accept: application/json
+Authorization: Bearer {{token}}
+
+### Criar Solicitação de Crédito
+POST {{base}}/api/solicitacoes-credito
+Content-Type: application/json
+Accept: application/json
+Authorization: Bearer {{token}}
+
+{
+    "valor_solicitado": 1100.00,
+    "descricao_solicitante": "Necessário para expansão do negócio",
+    "usuario_solicitante_id": 1
+}
+
+### Atualizar Solicitação de Crédito
+PUT {{base}}/api/solicitacoes-credito/1
+Content-Type: application/json
+Accept: application/json
+Authorization: Bearer {{token}}
+
+{
+    "valor_solicitado": 1500.00,
+    "descricao_solicitante": "Valor atualizado conforme necessidade"
+}
+
+### Deletar Solicitação de Crédito
+DELETE {{base}}/api/solicitacoes-credito/1
+Content-Type: application/json
+Accept: application/json
+Authorization: Bearer {{token}}
+
+### Aprovar Solicitação de Crédito
+PUT {{base}}/api/solicitacoes-credito/1/aprovar
+Content-Type: application/json
+Accept: application/json
+Authorization: Bearer {{token}}
+
+{
+    "observacoes": "Solicitação aprovada conforme análise"
+}
+
+### Rejeitar Solicitação de Crédito
+PUT {{base}}/api/solicitacoes-credito/2/rejeitar
+Content-Type: application/json
+Accept: application/json
+Authorization: Bearer {{token}}
+
+{
+    "motivo_rejeicao": "Documentação insuficiente"
+}
+
+### Solicitações da Matriz
+GET {{base}}/api/solicitacoes-credito/matriz
+Content-Type: application/json
+Accept: application/json
+Authorization: Bearer {{token}}
+
+### Resposta da Matriz
+PUT {{base}}/api/solicitacoes-credito/1/resposta-matriz
+Content-Type: application/json
+Accept: application/json
+Authorization: Bearer {{token}}
+
+{
+    "aprovado": true,
+    "comentario_matriz": "Aprovado pela matriz",
+    "valor_aprovado": 1000.00
+}
+
+### ============================================
+### FUNDO PERMUTA
+### ============================================
+
+### Listar Movimentações do Fundo
+GET {{base}}/api/fundo-permuta
+Content-Type: application/json
+Accept: application/json
+Authorization: Bearer {{token}}
+
+### Obter Movimentação do Fundo
+GET {{base}}/api/fundo-permuta/1
+Content-Type: application/json
+Accept: application/json
+Authorization: Bearer {{token}}
+
+### Criar Movimentação do Fundo
+POST {{base}}/api/fundo-permuta
+Content-Type: application/json
+Accept: application/json
+Authorization: Bearer {{token}}
+
+{
+    "tipo": "credito",
+    "valor": 500.00,
+    "usuario_id": 1,
+    "descricao": "Depósito inicial"
+}
+
+### Atualizar Movimentação do Fundo
+PUT {{base}}/api/fundo-permuta/1
+Content-Type: application/json
+Accept: application/json
+Authorization: Bearer {{token}}
+
+{
+    "descricao": "Descrição atualizada 2"
+}
+
+### Deletar Movimentação do Fundo
+DELETE {{base}}/api/fundo-permuta/1
+Content-Type: application/json
+Accept: application/json
+Authorization: Bearer {{token}}
+
+### Saldo do Usuário
+GET {{base}}/api/fundo-permuta/usuario/1
+Content-Type: application/json
+Accept: application/json
+Authorization: Bearer {{token}}
+
+### Transferir Saldo
+POST {{base}}/api/fundo-permuta/transferir
+Content-Type: application/json
+Accept: application/json
+Authorization: Bearer {{token}}
+
+{
+    "usuario_origem_id": 1,
+    "usuario_destino_id": 2,
+    "valor_transferencia": 100.00,
+    "descricao": "Transferência entre usuários"
+}
+
+### Movimentações do Usuário
+GET {{base}}/api/fundo-permuta/usuario/1/movimentacoes
+Content-Type: application/json
+Accept: application/json
+Authorization: Bearer {{token}}
